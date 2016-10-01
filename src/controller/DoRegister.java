@@ -44,16 +44,11 @@ public class DoRegister extends HttpServlet {
 		
 		Customer cus=new Customer(id, password, name, gender, email);
 		CustomerService service = (CustomerService)CustomerService.getInstance();
-		//request.setAttribute("customer", cus);
+		
 		
 		String page=null;
 		
-		/*if(cus.getId()==service.findCustomer(cus.getId()).getId()){
-			page="view/registerFail.jsp";
-			request.setAttribute("id", id);
-			
-		}*/
-		//else{
+	
 			service.addCustomer(cus);
 			page="/view/registerSuccess.jsp";
 			request.setAttribute("id", id);
@@ -61,7 +56,7 @@ public class DoRegister extends HttpServlet {
 			request.setAttribute("name", name);
 			request.setAttribute("gender", gender);
 			request.setAttribute("email", email);
-		//}
+		
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
